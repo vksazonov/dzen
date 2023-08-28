@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/dzen/static/css/main.0fcad012.css",
+    "main.js": "/dzen/static/js/main.a786cd9d.js",
+    "index.html": "/dzen/index.html",
+    "static/media/getFetch.cjs": "/dzen/static/media/getFetch.40f37ddea2378391108f.cjs",
+    "main.0fcad012.css.map": "/dzen/static/css/main.0fcad012.css.map",
+    "main.a786cd9d.js.map": "/dzen/static/js/main.a786cd9d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0fcad012.css",
+    "static/js/main.a786cd9d.js"
+  ]
+}
