@@ -6,7 +6,7 @@ export const productsFromServer: Product[] = [
     id: 1,
     serialNumber: 1234,
     isNew: 1,
-    photo: '/images/products/monitor.jpg',
+    photo: './images/products/monitor.jpg',
     title: 'Samsung Odyssey G5',
     type: 'monitors',
     specification: 'Specification 1',
