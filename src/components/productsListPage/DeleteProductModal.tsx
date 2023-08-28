@@ -5,6 +5,7 @@ import { Product } from '../../types/Product';
 import { CloseButton } from '../utils/CloseButton';
 import { handleCloseModal } from '../../redux/reducers/modalReducer';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: Product;
@@ -12,6 +13,7 @@ interface Props {
 
 export const DeleteProductModal: FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
 
   const closeModal = () => {
     dispatch(handleCloseModal());
@@ -23,7 +25,7 @@ export const DeleteProductModal: FC<Props> = ({ product }) => {
         <div className="modal__container">
           <CloseButton />
           <div className="modal__title">
-            <h2>Вы уверены, что хотите удалить этот товар?</h2>
+            <h2>{t('deleteProduct')}</h2>
           </div>
 
           <div className="modal__body">
@@ -51,7 +53,7 @@ export const DeleteProductModal: FC<Props> = ({ product }) => {
                 className="modal__button"
                 onClick={closeModal}
               >
-                ОТМЕНИТЬ
+                {t('cancel')}
               </button>
 
               <button
@@ -64,7 +66,7 @@ export const DeleteProductModal: FC<Props> = ({ product }) => {
                   alt="bucket"
                   className="modal__button--delete-icon"
                 />
-                УДАЛИТЬ
+                {t('delete')}
               </button>
             </div>
           </div>

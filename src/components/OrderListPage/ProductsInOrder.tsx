@@ -8,6 +8,7 @@ import { DeleteProductModal } from '../productsListPage/DeleteProductModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { setOpenModal } from '../../redux/reducers/modalReducer';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   chosenOrder: Order;
@@ -16,6 +17,7 @@ interface Props {
 
 export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const products = useSelector((state: RootState) => state.product.products);
   const openModal = useSelector((state: RootState) => state.modal.openModal);
 
@@ -46,7 +48,7 @@ export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
             alt="Add product"
             className="product-card__add-pic"
           />
-          <span className="product-card__add-text">Добавить продукт</span>
+          <span className="product-card__add-text">{t('add')}</span>
         </button>
 
         <div className="product__list">
@@ -78,8 +80,8 @@ export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
                   })}
                 >
                   {product.specification === 'Specification 1'
-                    ? 'Свободен'
-                    : 'В ремонте'}
+                    ? `${t('free')}`
+                    : `${t('repair')}`}
                 </span>
               </div>
 

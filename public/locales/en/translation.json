@@ -1,0 +1,72 @@
+{
+  "header": {
+    "search": "Search",
+    "months": {
+      "jan":"Jan",
+      "feb":"Feb",
+      "mar":"Mar",
+      "apr":"Apr",
+      "may":"May",
+      "jun":"Jun",
+      "jul":"Jul",
+      "aug":"Aug",
+      "sep":"Sep",
+      "oct":"Oct",
+      "nov":"Nov",
+      "dec":"Dec"
+    },
+    "weekDays": {
+      "sun":"Sunday",
+      "mon":"Monday",
+      "tue":"Tuesday",
+      "wed":"Wednesday",
+      "thu":"Thursday",
+      "fri":"Friday",
+      "sat":"Saturday"
+    }
+  },
+  "client": {
+    "orders": "Orders",
+    "products": "Products"
+  },
+  "product": {
+    "title": "Products",
+    "type": "Type",
+    "sort": "Sort"
+  },
+  "filter": {
+    "all": "All",
+    "laptops": "Laptops",
+    "monitors": "Monitors",
+    "consoles": "Consoles",
+    "tvs": "TVs",
+    "phones": "Phones"
+  },
+  "sorting": {
+    "byName":"By name",
+    "byPriceAsc":"By price ↑",
+    "byPriceDesc":"By price ↓",
+    "byDateAsc":"By date ↑",
+    "byDateDesc":"By date ↓"
+  },
+  "not-found": "According to your request, nothing was found",
+  "free": "Free",
+  "repair": "Under repair",
+  "from": "from",
+  "to": "to",
+  "new": "New",
+  "used": "Used",
+  "uah": "UAH",
+  "orderNo": "Order",
+  "deleteProduct": "Are you sure, you want to delete this product?",
+  "deleteOrder": "Are you sure, you want to delete this order?",
+  "delete": "DELETE",
+  "cancel": "CANCEL",
+  "orders": "Orders",
+  "productsQuantity": "Рroducts",
+  "productsOne": "Product",
+  "noOrders": "There are no available orders at the moment.",
+  "add": "Add a product",
+  "language": "Language"
+}
+  

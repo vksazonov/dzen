@@ -1,6 +1,5 @@
 import { createReducer, PayloadAction } from '@reduxjs/toolkit';
 import { Order } from '../../types/Order';
-import { ordersFromServer } from '../../api/orders';
 import { setOrders } from '../actions/orderActions';
 
 interface OrderState {
@@ -8,7 +7,7 @@ interface OrderState {
 }
 
 const initialState: OrderState = {
-  orders: ordersFromServer,
+  orders: [],
 };
 
 const ordersReducer = createReducer(initialState, (builder) => {

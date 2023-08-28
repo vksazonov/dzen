@@ -9,6 +9,7 @@ import './styles/OrderItem.scss';
 import { totalPrice } from '../../utils/totalPriceUtils';
 import { DeleteOrderModal } from './DeleteOrderModal';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   order: Order;
@@ -19,6 +20,7 @@ interface Props {
 export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
   const products = useSelector((state: RootState) => state.product.products);
   const { totalDollar, totalHryvna } = totalPrice(order.products, products);
+  const {t} = useTranslation();
 
   const dispatch = useDispatch();
   const openModal = useSelector((state: RootState) => state.modal.openModal);
@@ -55,7 +57,9 @@ export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
           <span className="order__item-quantity-number">
             {order.products.length}
           </span>
-          <span className="order__item-quantity-text">Продукта</span>
+          <span className="order__item-quantity-text">
+            {order.products.length > 1 ? t('productsQuantity') : t('productsOne')}
+          </span>
         </div>
 
         <div className="date">

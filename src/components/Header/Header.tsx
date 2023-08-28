@@ -5,8 +5,11 @@ import { DateSection } from './DateSection';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { setQuery } from '../../redux/reducers/searchReducer';
+import { useTranslation } from 'react-i18next';
+
 
 export const Header = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const query = useSelector((state: RootState) => state.search.query);
 
@@ -38,7 +41,7 @@ export const Header = () => {
           <input
             className="header__input"
             type="text"
-            placeholder="Поиск"
+            placeholder={t('header.search')}
             value={query}
             onChange={(e) => handleInput(e.target.value)}
           />

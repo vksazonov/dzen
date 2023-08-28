@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './styles/DateSection.scss';
+import { useTranslation } from 'react-i18next';
 
 
 export const DateSection = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { t } = useTranslation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,18 +17,15 @@ export const DateSection = () => {
     };
   }, []);
 
-  const capitalizeFirstLetter = (str: string) => (
-    str.charAt(0).toUpperCase() + str.slice(1)
-  );
-
   return (
     <div className="date-section">
       <div className="date-section__date">
         <p className='date-section__weekday'>
-          {capitalizeFirstLetter(currentTime.toLocaleString('ru-RU', { weekday: 'long' }))}
+          {t(`header.weekDays.${currentTime.toLocaleString('en-US', { weekday: 'short' }).toLowerCase()}`)}
         </p>
         <p className="date-section__rest">
-          {capitalizeFirstLetter(currentTime.toLocaleString('ru-RU', { day: 'numeric', month: 'short', year: 'numeric' }))}
+          {t(`header.months.${currentTime.toLocaleString('en-US', { month: 'short' }).toLowerCase()}`)}{' '}
+          {currentTime.getDate()}, {currentTime.getFullYear()}
         </p>
       </div>
       <div className="date-section__time">

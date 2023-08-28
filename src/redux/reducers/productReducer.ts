@@ -1,7 +1,6 @@
 import { createReducer, createSelector, PayloadAction } from '@reduxjs/toolkit';
 import { Product } from '../../types/Product';
 import { RootState } from '../store';
-import { productsFromServer } from '../../api/products';
 import { setFilter, setProducts, setSort } from '../actions/productActions';
 
 interface ProductState {
@@ -11,7 +10,7 @@ interface ProductState {
 }
 
 const initialState: ProductState = {
-  products: productsFromServer,
+  products: [],
   filter: 'all',
   sort: 'default',
 };

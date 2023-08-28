@@ -4,6 +4,7 @@ import { Order } from '../../types/Order';
 import { useDispatch, useSelector } from 'react-redux';
 import { handleCloseModal } from '../../redux/reducers/modalReducer';
 import { RootState } from '../../redux/store';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   order: Order;
@@ -11,6 +12,7 @@ interface Props {
 
 export const DeleteOrderModal: FC<Props> = ({ order }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const openModal = useSelector((state: RootState) => state.modal.openModal);
 
   const closeModal = () => {
@@ -30,7 +32,7 @@ export const DeleteOrderModal: FC<Props> = ({ order }) => {
           </button>
 
           <div className="modal__title">
-            <h2>Вы уверены, что хотите удалить этот заказ?</h2>
+            <h2>{t('deleteOrder')}</h2>
           </div>
 
           <div className="modal__body">
@@ -46,7 +48,7 @@ export const DeleteOrderModal: FC<Props> = ({ order }) => {
                 className="modal__button"
                 onClick={closeModal}
               >
-                ОТМЕНИТЬ
+                {t('cancel')}
               </button>
 
               <button
@@ -59,7 +61,7 @@ export const DeleteOrderModal: FC<Props> = ({ order }) => {
                   alt="bucket"
                   className="modal__button--delete-icon"
                 />
-                УДАЛИТЬ
+                {t('delete')}
               </button>
             </div>
           </div>

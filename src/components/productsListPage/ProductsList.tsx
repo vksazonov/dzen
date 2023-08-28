@@ -1,20 +1,24 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredAndSortedProducts } from '../../redux/reducers/productReducer';
 import { RootState } from '../../redux/store';
 import { FilterAndSort } from './FiterAndSort';
 import { ProductItem } from './ProductItem';
-import { Product } from '../../types/Product';
+import { setProducts } from '../../redux/actions/productActions';
+import { productsFromServer } from '../../api/products';
 
 export const ProductList = () => {
-  const filteredAndSortedProducts: Product[] = useSelector(
-    selectFilteredAndSortedProducts
-  );
+  const dispatch = useDispatch();
+  const filteredAndSortedProducts = useSelector(selectFilteredAndSortedProducts);
   const query = useSelector((state: RootState) => state.search.query);
 
   const searchFilteredProducts = filteredAndSortedProducts.filter((product) =>
     product.title.toLowerCase().includes(query.toLowerCase())
   );
+
+  useEffect(() => {
+    dispatch(setProducts(productsFromServer));
+  }, [dispatch]);
 
   return (
     <div className="products">

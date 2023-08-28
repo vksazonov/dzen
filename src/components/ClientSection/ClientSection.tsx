@@ -1,44 +1,47 @@
 import React from 'react';
-import './ClientSection.scss';
+import './styles/ClientSection.scss';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
-import { Col, Image, ListGroup } from 'react-bootstrap';
+import { LanguageChanger } from './LanguageChanger';
+import { useTranslation } from 'react-i18next';
 
 export const ClientSection = () => {
-
+  const { t } = useTranslation();
   return (
     <nav className='client'>
-      <Col className='client__container'>
-        <Col className="client__photo-container">
-          <Image 
+      <div className='client__container'>
+        <div className="client__photo-container">
+          <img 
             src="./images/man.jpg" 
             alt="photo" 
             className="client__photo" 
           />
-          <Image 
+          <img 
             src="./images/settings.svg" 
             alt="settings" 
             className="client__settings" 
           />
-        </Col>
+        </div>
 
-        <ListGroup as="ul" className="nav">
-          <ListGroup.Item as="li" className="nav__item">
+        <ul className="nav">
+          <li className="nav__item">
             <NavLink to="/orders" className={({isActive }) => classNames('nav__link', {
               'is-active': isActive
             })}>
-              Заказы
+              {t('client.orders')}
             </NavLink>
-          </ListGroup.Item>
-          <ListGroup.Item as="li" className="nav__item">
+          </li>
+          <li className="nav__item">
             <NavLink to="/" className={({isActive }) => classNames('nav__link', {
               'is-active': isActive
             })}>
-              Продукты
+              {t('client.products')}
             </NavLink>
-          </ListGroup.Item>
-        </ListGroup>
-      </Col>
+          </li>
+        </ul>
+
+        <LanguageChanger />
+      </div>
     </nav>
   );
 };

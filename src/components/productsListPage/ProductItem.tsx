@@ -9,6 +9,7 @@ import { DeleteButton } from '../utils/DeleteButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { setOpenModal } from '../../redux/reducers/modalReducer';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   product: Product;
@@ -16,6 +17,7 @@ interface Props {
 
 export const ProductItem: FC<Props> = ({ product }) => {
   const dispatch = useDispatch();
+  const {t} = useTranslation();
   const openModal = useSelector((state: RootState) => state.modal.openModal);
 
   const handleOpenModal = (orderId: number) => {
@@ -60,25 +62,25 @@ export const ProductItem: FC<Props> = ({ product }) => {
               gray: specification === 'Specification 2',
             })}
           >
-            {specification === 'Specification 1' ? 'Свободен' : 'В ремонте'}
+            {specification === 'Specification 1' ? `${t('free')}` : `${t('repair')}`}
           </span>
         </div>
 
         <div className="product__guarantee">
           <div className="product__guarantee-block">
-            <span className="product__guarantee-text">c</span>
+            <span className="product__guarantee-text">{t('from')}</span>
             <span className="product__guarantee-date">{guarantee.start}</span>
           </div>
 
           <div className="product__guarantee-block">
-            <span className="product__guarantee-text">по</span>
+            <span className="product__guarantee-text">{t('to')}</span>
             <span className="product__guarantee-date">{guarantee.end}</span>
           </div>
         </div>
 
         <div className="product__novelty">
           <span className="product__novelty-text">
-            {isNew === 1 ? 'новый' : 'Б/У'}
+            {isNew === 1 ? `${t('new')}` : `${t('used')}`}
           </span>
         </div>
 
@@ -91,7 +93,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
               })}
               key={currency.symbol}
             >
-              {currency.value} {currency.symbol === 'UAH' ? 'UAH' : '$'}
+              {currency.value} {currency.symbol === 'UAH' ? `${t('uah')}` : '$'}
             </span>
           ))}
         </div>
@@ -99,7 +101,7 @@ export const ProductItem: FC<Props> = ({ product }) => {
         <div className="product__orders">
           {order.length > 0 ? (
             <>
-              <span className="product__orders-text">Заказ №</span>
+              <span className="product__orders-text">{t('orderNo')} №</span>
               <span className="product__orders-number">{order.join(', ')}</span>
             </>
           ) : (

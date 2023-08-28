@@ -1,0 +1,18 @@
+@import '../../../utils/variables';
+
+.language-changer {
+  margin-top: 40px;
+  font-size: 18px;
+    font-weight: 600;
+    color: $main-font-color;
+
+    &__select {
+      font-size: 14px;
+      font-weight: 600;
+      color: $main-font-color;
+      margin-left: 20px;
+      border-radius: 5px;
+      border: 2px solid $border-color;
+      background-color: $background-main-color;
+    }
+}
