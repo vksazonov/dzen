@@ -1,4 +1,4 @@
-[DEMO LINK](https://github.com/facebook/create-react-app](https://vksazonov.github.io/dzen/).
+[DEMO LINK](https://vksazonov.github.io/dzen/)
 
 ## Technologies used
 
