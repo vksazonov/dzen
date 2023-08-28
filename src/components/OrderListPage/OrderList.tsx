@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import './styles/OrderList.scss';
-import { ordersFromServer } from '../../api/orders';
 import { OrderItem } from './OrderItem';
 import { ProductsInOrder } from './ProductsInOrder';
-import { useOrderContext } from '../../context/OrderContext';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 export const OrderList = () => {
   const [openMoreId, setOpenMoreId] = useState<number>(0);
-  const { orders, setOrders } = useOrderContext();
+  const orders = useSelector((state: RootState) => state.order.orders);
 
   const handleOpenMore = useCallback((id: number) => {
     setOpenMoreId(prevId => (prevId === id ? 0 : id));
@@ -17,10 +16,6 @@ export const OrderList = () => {
   const chosenOrder = openMoreId !== 0 
     ? orders.find(order => order.id === openMoreId) 
     : null;
-
-  useEffect(() => {
-    setOrders(ordersFromServer);
-  });
 
   return (
     <div className="order__wrapper">

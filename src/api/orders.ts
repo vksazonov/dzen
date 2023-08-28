@@ -1,4 +1,5 @@
 import { Order } from '../types/Order';
+//import axios from 'axios';
 
 export const ordersFromServer: Order[] = [
   {
@@ -44,3 +45,14 @@ export const ordersFromServer: Order[] = [
     products: [1, 2, 3, 4, 8],
   }
 ];
+
+export const fetchOrders = async () => {
+  try {
+    //const response = await axios.get('API_endpoint');
+    //const ordersFromServer = response.data;
+
+    return ordersFromServer;
+  } catch (error) {
+    throw new Error('An error occured while fetching orders');
+  }
+};

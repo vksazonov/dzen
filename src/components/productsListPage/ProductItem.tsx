@@ -5,15 +5,22 @@ import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { DeleteProductModal } from './DeleteProductModal';
 import { shortenDate, fullDate } from '../../utils/dateUtils';
-import { useModalContext } from '../../context/ModalContext';
 import { DeleteButton } from '../utils/DeleteButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setOpenModal } from '../../redux/reducers/modalReducer';
 
 interface Props {
-  product: Product
+  product: Product;
 }
 
-export const ProductItem:FC<Props> = ( { product }) => {
-  const { openModal, handleOpenModal } = useModalContext();
+export const ProductItem: FC<Props> = ({ product }) => {
+  const dispatch = useDispatch();
+  const openModal = useSelector((state: RootState) => state.modal.openModal);
+
+  const handleOpenModal = (orderId: number) => {
+    dispatch(setOpenModal(orderId));
+  };
 
   const {
     id,
@@ -30,26 +37,30 @@ export const ProductItem:FC<Props> = ( { product }) => {
   return (
     <div className="product">
       <div className="product__item" key={id}>
-        <div className={classNames('product__status-indicator', {
-          'back-green': specification === 'Specification 1',
-          'back-gray': specification === 'Specification 2'
-        })}></div>
+        <div
+          className={classNames('product__status-indicator', {
+            'back-green': specification === 'Specification 1',
+            'back-gray': specification === 'Specification 2',
+          })}
+        ></div>
 
         <div className="product__photo-container">
           <img src={photo} alt="" className="product__photo" />
         </div>
 
         <div className="product__description">
-          <span className='product__title'>{title}</span>
-          <span className='product__serial'>{serialNumber}</span>
+          <span className="product__title">{title}</span>
+          <span className="product__serial">{serialNumber}</span>
         </div>
 
         <div className="product__status">
-          <span className={classNames('product__status-text', {
-            'green': specification === 'Specification 1',
-            'gray': specification === 'Specification 2'
-          })}>
-            {specification === 'Specification 1' ? ('Свободен') : ('В ремонте')}
+          <span
+            className={classNames('product__status-text', {
+              green: specification === 'Specification 1',
+              gray: specification === 'Specification 2',
+            })}
+          >
+            {specification === 'Specification 1' ? 'Свободен' : 'В ремонте'}
           </span>
         </div>
 
@@ -66,51 +77,47 @@ export const ProductItem:FC<Props> = ( { product }) => {
         </div>
 
         <div className="product__novelty">
-          <span className="product__novelty-text">{isNew === 1 ? 'новый' : 'Б/У'}</span>
+          <span className="product__novelty-text">
+            {isNew === 1 ? 'новый' : 'Б/У'}
+          </span>
         </div>
 
         <div className="price">
-          {product.price.map(currency => (
-            <span 
+          {product.price.map((currency) => (
+            <span
               className={classNames('price-value', {
                 'dark-gray': currency.symbol === 'UAH',
-                'light-gray': currency.symbol === 'USD'
+                'light-gray': currency.symbol === 'USD',
               })}
-              key={currency.symbol}>
+              key={currency.symbol}
+            >
               {currency.value} {currency.symbol === 'UAH' ? 'UAH' : '$'}
             </span>
           ))}
         </div>
 
         <div className="product__orders">
-          {order.length > 0 
-            ? (
-              <>
-                <span className='product__orders-text'>Заказ №</span>
-                <span className='product__orders-number'>{order.join(', ')}</span>
-              </>
-            ) : (
-              <span className='product__orders-text'>-</span>
-            )}
-              
-              
+          {order.length > 0 ? (
+            <>
+              <span className="product__orders-text">Заказ №</span>
+              <span className="product__orders-number">{order.join(', ')}</span>
+            </>
+          ) : (
+            <span className="product__orders-text">-</span>
+          )}
         </div>
 
         <div className="date">
           <span className="date-short">{shortenDate(date)}</span>
           <span className="date-long">{fullDate(date)}</span>
         </div>
-            
-        <DeleteButton 
+
+        <DeleteButton
           handleOpenModal={() => handleOpenModal(product.id)}
-          prodId = {product.id}
-        />           
-      </div>
-      {openModal === id && (
-        <DeleteProductModal 
-          product={product}
+          prodId={product.id}
         />
-      )}
+      </div>
+      {openModal === id && <DeleteProductModal product={product} />}
     </div>
   );
 };

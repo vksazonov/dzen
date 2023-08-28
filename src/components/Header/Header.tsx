@@ -1,65 +1,58 @@
-import React, { ChangeEvent, useState } from 'react';
+import React from 'react';
 import './styles/Header.scss';
-import { Container, Row, Figure, Form, Button } from 'react-bootstrap';
-import { useSearchContext } from '../../context/SearchContext';
 import { NavLink } from 'react-router-dom';
 import { DateSection } from './DateSection';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setQuery } from '../../redux/reducers/searchReducer';
 
 export const Header = () => {
-  const [isBlocked, setIsBlocked] = useState(true);
-  const { query, setQuery } = useSearchContext();
+  const dispatch = useDispatch();
+  const query = useSelector((state: RootState) => state.search.query);
 
-  const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-    query.length > 0 ? setIsBlocked(false) : setIsBlocked(true);
-    
+  const handleInput = (newQuery: string) => {
+    dispatch(setQuery(newQuery));
   };
 
   const handleReset = () => {
-    setQuery('');
-    setIsBlocked(true);
+    dispatch(setQuery(''));
   };
 
   return (
     <header className="header">
-      <Container fluid='lg' className="header__container">
-        <Row className="header__left">
-          <NavLink to="/" className='nav__link'>
-            <Figure className="header__logo">
-              <Figure.Image 
-                className="header__logo-image" 
+      <div className="header__container">
+        <div className="header__left">
+          <NavLink to="/" className="nav__link">
+            <div className="header__logo">
+              <img
+                className="header__logo-image"
                 src="./images/logo.jpg"
-                height= {40}
-                width= {40}
               />
 
-              <Figure.Caption className="header__logo-text">
+              <span className="header__logo-text">
                 Inventory
-              </Figure.Caption>
-            </Figure>
+              </span>
+            </div>
           </NavLink>
-          
-          <Form.Control
-            className='header__input'
-            type='text'
-            placeholder='Поиск'
+
+          <input
+            className="header__input"
+            type="text"
+            placeholder="Поиск"
             value={query}
-            onChange={handleInput}
+            onChange={(e) => handleInput(e.target.value)}
           />
 
-          <Button
+          <button
             className="header__input-clear"
-            variant="link"
-            disabled={isBlocked}
+            disabled={query.length < 1}
             onClick={handleReset}
           >
-      x
-          </Button>
-        </Row>
+            x
+          </button>
+        </div>
         <DateSection />
-      </Container>
-
+      </div>
     </header>
   );
 };

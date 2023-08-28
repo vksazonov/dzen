@@ -2,23 +2,26 @@ import React, { FC } from 'react';
 import { Order } from '../../types/Order';
 import './styles/ProductsInOrder.scss';
 import '../productsListPage/styles/ProductList.scss';
-import { useProductContext } from '../../context/ProductContext';
 import classNames from 'classnames';
-import { useModalContext } from '../../context/ModalContext';
 import { DeleteButton } from '../utils/DeleteButton';
 import { DeleteProductModal } from '../productsListPage/DeleteProductModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setOpenModal } from '../../redux/reducers/modalReducer';
 
 interface Props {
   chosenOrder: Order;
   setOpenMoreId: (id: number) => void;
 }
 
-export const ProductsInOrder: FC<Props> = ({
-  chosenOrder,
-  setOpenMoreId,
-}) => {
-  const { products } = useProductContext();
-  const { openModal, handleOpenModal } = useModalContext();
+export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
+  const dispatch = useDispatch();
+  const products = useSelector((state: RootState) => state.product.products);
+  const openModal = useSelector((state: RootState) => state.modal.openModal);
+
+  const handleOpenModal = (orderId: number) => {
+    dispatch(setOpenModal(orderId));
+  };
 
   const orderedProducts = products.filter((product) => {
     return chosenOrder.products.some((id) => id === product.id);
@@ -34,7 +37,7 @@ export const ProductsInOrder: FC<Props> = ({
         X
       </button>
 
-      <div className='product-card__wrapper'>
+      <div className="product-card__wrapper">
         <div className="product-card__title">{chosenOrder.title}</div>
 
         <button className="product-card__add">
@@ -80,15 +83,13 @@ export const ProductsInOrder: FC<Props> = ({
                 </span>
               </div>
 
-              <DeleteButton 
+              <DeleteButton
                 handleOpenModal={() => handleOpenModal(product.id)}
-                prodId = {product.id}
+                prodId={product.id}
               />
 
               {openModal === product.id && (
-                <DeleteProductModal
-                  product={product}
-                />
+                <DeleteProductModal product={product} />
               )}
             </div>
           ))}

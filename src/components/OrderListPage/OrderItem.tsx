@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenModal } from '../../redux/reducers/modalReducer';
+import { RootState } from '../../redux/store';
 import { Order } from '../../types/Order';
 import { fullDate, shortenDate } from '../../utils/dateUtils';
 import '../../App.scss';
 import './styles/OrderItem.scss';
-import { useProductContext } from '../../context/ProductContext';
 import { totalPrice } from '../../utils/totalPriceUtils';
 import { DeleteOrderModal } from './DeleteOrderModal';
 import classNames from 'classnames';
-import { useModalContext } from '../../context/ModalContext';
 
 interface Props {
   order: Order;
@@ -16,17 +17,20 @@ interface Props {
 }
 
 export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
-  const { products } = useProductContext();
+  const products = useSelector((state: RootState) => state.product.products);
   const { totalDollar, totalHryvna } = totalPrice(order.products, products);
-  const { openModal, handleOpenModal} = useModalContext();
-  const {
-    id,
-    title,
-    date
-  } = order;
+
+  const dispatch = useDispatch();
+  const openModal = useSelector((state: RootState) => state.modal.openModal);
+
+  const { id, title, date } = order;
+
+  const handleOpenModal = (orderId: number) => {
+    dispatch(setOpenModal(orderId));
+  };
 
   return (
-    <div className={classNames('order__item', { 'short': openMoreId })}>
+    <div className={classNames('order__item', { short: openMoreId })}>
       <div className="order__item-wrapper">
         {!openMoreId && (
           <div className="order__item-title">
@@ -67,7 +71,10 @@ export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
             </div>
 
             <div className="delete">
-              <button className="delete-button" onClick={() =>handleOpenModal(id)}>
+              <button
+                className="delete-button"
+                onClick={() => handleOpenModal(id)}
+              >
                 <img
                   src="./images/bucket.svg"
                   alt="bucket"
@@ -78,10 +85,7 @@ export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
           </>
         ) : (
           <div className="close">
-            <button
-              className="close-button"
-              onClick={() => handleOpenMore(id)}
-            >
+            <button className="close-button" onClick={() => handleOpenMore(id)}>
               <img
                 src="./images/arrow.svg"
                 alt="bucket"
@@ -91,9 +95,7 @@ export const OrderItem: FC<Props> = ({ order, openMoreId, handleOpenMore }) => {
           </div>
         )}
 
-        {openModal && (
-          <DeleteOrderModal order={order} />
-        )}
+        {openModal && <DeleteOrderModal order={order} />}
       </div>
     </div>
   );

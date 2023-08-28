@@ -1,32 +1,39 @@
-import React, { FC } from 'react';
+import React, { useCallback } from 'react';
 import './styles/FilterAndSort.scss';
-import { useProductContext } from '../../context/ProductContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { setFilter, setSort } from '../../redux/actions/productActions';
 
-interface Props {
-  filter: string;
-  sort: string;
-  handleFilter: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  handleSort: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-}
+export const FilterAndSort = () => {
+  const products = useSelector((state: RootState) => state.product.products);
+  const filter = useSelector((state: RootState) => state.product.filter);
+  const sort = useSelector((state: RootState) => state.product.sort);
 
-export const FilterAndSort:FC<Props> = ({ 
-  filter,
-  sort,
-  handleFilter,
-  handleSort,
-}) => {
+  const dispatch = useDispatch();
 
-  const { products } = useProductContext();
-  
+  const handleSort = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      dispatch(setSort(event.target.value));
+    },
+    [dispatch]
+  );
+
+  const handleFilter = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      dispatch(setFilter(event.target.value));
+    },
+    [dispatch]
+  );
+
   return (
     <div className="products__upper-part">
-      <h1 className='products__header'> Продукты / {products.length}</h1>
+      <h1 className="products__header"> Продукты / {products.length}</h1>
 
-      <span className='products__type'>Тип:</span>
+      <span className="products__type">Тип:</span>
 
-      <select 
-        className='products__type-select'
-        onChange={handleFilter} 
+      <select
+        className="products__type-select"
+        onChange={handleFilter}
         value={filter}
       >
         <option value="all">Все</option>
@@ -36,12 +43,13 @@ export const FilterAndSort:FC<Props> = ({
         <option value="phones">Телефоны</option>
       </select>
 
-      <span className='products__type'>Сортировка:</span>
+      <span className="products__type">Сортировка:</span>
 
-      <select 
-        className='products__type-select' 
-        onChange={handleSort} 
-        value={sort}>
+      <select
+        className="products__type-select"
+        onChange={handleSort}
+        value={sort}
+      >
         <option value="default">-</option>
         <option value="name">По имени</option>
         <option value="price-up">По цене ↑</option>

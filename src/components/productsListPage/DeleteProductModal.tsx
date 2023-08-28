@@ -3,16 +3,20 @@ import './styles/DeleteProductModal.scss';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { CloseButton } from '../utils/CloseButton';
-import { useModalContext } from '../../context/ModalContext';
+import { handleCloseModal } from '../../redux/reducers/modalReducer';
+import { useDispatch } from 'react-redux';
 
 interface Props {
   product: Product;
-
 }
 
 export const DeleteProductModal: FC<Props> = ({ product }) => {
+  const dispatch = useDispatch();
 
-  const {  handleCloseModal } = useModalContext();
+  const closeModal = () => {
+    dispatch(handleCloseModal());
+  };
+
   return (
     <div className="modal">
       <div className="modal__background">
@@ -23,18 +27,20 @@ export const DeleteProductModal: FC<Props> = ({ product }) => {
           </div>
 
           <div className="modal__body">
-            <div className={classNames('product__status-indicator', {
-              'back-green': product.specification === 'Specification 1',
-              'back-gray': product.specification === 'Specification 2'
-            })}></div>
+            <div
+              className={classNames('product__status-indicator', {
+                'back-green': product.specification === 'Specification 1',
+                'back-gray': product.specification === 'Specification 2',
+              })}
+            ></div>
 
             <div className="product__photo-container">
               <img src={product.photo} alt="" className="product__photo" />
             </div>
 
             <div className="product__description">
-              <span className='product__title'>{product.title}</span>
-              <span className='product__serial'>SN-{product.serialNumber}</span>
+              <span className="product__title">{product.title}</span>
+              <span className="product__serial">SN-{product.serialNumber}</span>
             </div>
           </div>
 
@@ -43,24 +49,23 @@ export const DeleteProductModal: FC<Props> = ({ product }) => {
               <button
                 type="button"
                 className="modal__button"
-                onClick={handleCloseModal}
+                onClick={closeModal}
               >
-              ОТМЕНИТЬ
+                ОТМЕНИТЬ
               </button>
 
               <button
                 type="button"
                 className="modal__button modal__button--delete"
-                onClick={handleCloseModal}
+                onClick={closeModal}
               >
-                <img 
-                  src='./images/bucket.svg' 
-                  alt="bucket" 
-                  className='modal__button--delete-icon' 
+                <img
+                  src="./images/bucket.svg"
+                  alt="bucket"
+                  className="modal__button--delete-icon"
                 />
                 УДАЛИТЬ
               </button>
-
             </div>
           </div>
         </div>

@@ -1,16 +1,18 @@
 import React from 'react';
 import './styles/CloseButton.scss';
-import { useModalContext } from '../../context/ModalContext';
+import { useDispatch } from 'react-redux';
+import { handleCloseModal } from '../../redux/reducers/modalReducer';
 
 export const CloseButton = () => {
-  const {  handleCloseModal } = useModalContext();
+  const dispatch = useDispatch();
+
+  const closeModal = () => {
+    dispatch(handleCloseModal());
+  };
+
   return (
-    <button
-      type="button"
-      className="modal__button--close"
-      onClick={handleCloseModal}
-    >
-    X
+    <button type="button" className="modal__button--close" onClick={closeModal}>
+      X
     </button>
   );
 };
