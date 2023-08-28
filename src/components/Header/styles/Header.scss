@@ -1,0 +1,61 @@
+@import '../../../utils/variables';
+
+.header {
+  height: 100px;
+  background-color: $white-color;
+  box-shadow: 2px 2px 5px 1px $shadow-color;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 10%;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__input {
+    line-height: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 400px;
+    color: $main-font-color;
+    margin-left: 100px;
+    border-radius: 5px;
+    border: 2px solid $border-color;
+    background-color: $background-main-color;
+
+    &::placeholder {
+      color: $main-font-color;
+      padding-left: 10px;
+    }
+
+    &-clear {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 25px;
+      border: 2px solid $border-color;
+      border-radius: 5px;
+      background-color: $background-main-color;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-text {
+      font-size: 23px;
+      font-weight: 600;
+      margin-left: 20px;
+      color: $green-color;
+    }
+  }
+
+  
+}

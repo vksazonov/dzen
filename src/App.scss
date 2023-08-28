@@ -1,0 +1,78 @@
+@import './utils/normalize';
+@import './utils/variables';
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $background-main-color;
+}
+
+.App__main {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 1;
+}
+
+.main-content {
+  width: 100%;
+}
+
+.date {
+  display: flex;
+  flex-direction: column;
+  flex-basis: $basis;
+  align-items: center;
+
+  &-short {
+    color: $light-gray;
+  }
+
+  &-long {
+    font-weight: 500;
+    color: $dark-gray;
+  }
+}
+
+.price {
+  display: flex;
+  flex-direction: column;
+  flex-basis: $basis;
+  align-items: center;
+
+  &-value {
+    font-weight: 400;
+  }
+}
+
+.delete {
+  display: flex;
+  flex-basis: 150px;
+  justify-content: center;
+
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+    border: 0;
+    background-color: $white-color;
+  }
+
+  &-icon {
+    height: 25px;
+    width: 25px;
+  }
+}
+
+.light-gray {
+  color: $light-gray;
+}
+
+.dark-gray {
+  color: $dark-gray;
+  font-weight: 500;
+}

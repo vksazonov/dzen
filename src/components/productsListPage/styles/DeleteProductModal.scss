@@ -1,0 +1,81 @@
+@import '../../../utils/variables';
+.modal {
+  position: fixed;
+
+  &__background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: $shadow-color;
+    backdrop-filter: blur(2px);
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 800px;
+
+    background-color: $white-color;
+    border: 0px;
+    box-shadow: 0px 3px 13px $shadow-color;
+    border-radius: 5px;
+    margin: 16px;
+  }
+
+  &__title {
+    color: $background-main-color;
+    letter-spacing: 1px;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #F0F3F5;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    background-color: $green-color;
+    height: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    padding: 30px;
+  }
+
+  &__button {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    border: 0;
+    padding: 20px;
+    background-color: transparent;
+    color: $white-color;
+    cursor: pointer;
+
+    &--delete {
+      display: flex;
+      align-items: center;
+      background-color: $white-color;
+      color: $red-color;
+
+      &-icon {
+        height: 20px;
+        padding-right: 10px;
+      }
+    }
+  }
+}

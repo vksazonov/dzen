@@ -1,0 +1,53 @@
+@import '../../../utils/variables';
+
+.product-card {
+  position: relative;
+  margin-top: 170px;
+  border: 2px solid $border-color;
+  background-color: $white-color;
+  border-radius: 5px;
+
+  &__wrapper {
+    padding: 30px;
+    min-width: 800px;
+  }
+
+  &__title {
+    font-size: 25px;
+    font-weight: 700;
+    color: $main-font-color;
+  }
+
+  &__add {
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: $white-color;
+    margin-top: 30px;
+    padding: 0;
+    cursor: pointer;
+
+    &-pic {
+      height: 35px;
+      margin-right: 10px;
+    }
+
+    &-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: $green-color;
+    }
+  }
+}
+
+.product__list {
+  margin-top: 20px;
+}
+.product__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  padding-top: 10px;
+  margin-top: 10px;
+}

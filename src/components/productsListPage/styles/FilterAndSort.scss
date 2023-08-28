@@ -1,0 +1,41 @@
+@import '../../../utils/variables';
+.products{
+  &__upper-part {
+    display: flex;
+    align-items: end;
+  }
+  
+  &__header {
+    color: $main-font-color;
+    letter-spacing: 2px;
+    margin-right: 50px;
+  }
+  
+  &__type {
+    color: $light-gray;
+    margin-right: 20px;
+  
+    &-select {
+      width: 300px;
+      font-size: 16px;
+      line-height: 25px;
+      font-weight: 600;
+      border-radius: 5px;
+      border: 0;
+      margin-right: 50px;
+  
+      &::placeholder {
+        color: $main-font-color;
+        padding-left: 10px;
+      }
+  
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  
+  &__list {
+    margin-top: 100px;
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../../utils/variables';
+
+.products {
+  padding: 100px;
+
+}
+
+.not-found {
+  margin-top: 20px;
+  color: $main-font-color;
+}
+
+.green {
+  color: $green-color;
+}
+
+.gray {
+  color: $main-font-color;
+}
+
+.back-green {
+  background-color: $green-color;
+}
+
+.back-gray {
+  background-color: $main-font-color;
+}

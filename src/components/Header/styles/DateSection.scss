@@ -1,0 +1,31 @@
+@import '../../../utils/variables';
+
+.date-section {
+  display: flex;
+  align-items: center;
+
+  &__date {
+    color: $main-font-color;
+    font-weight: 500;
+  }
+  
+  &__time {
+  display: flex;
+  flex-direction: row;
+  padding-left: 20px;
+  
+  
+  &-image {
+    align-self: flex-end;
+    height: 18px;
+  }
+  
+  &-text {
+    font-weight: 500;
+    color: $main-font-color;
+    padding-left: 10px;
+    margin-bottom: 0;
+  }
+  }
+}
+

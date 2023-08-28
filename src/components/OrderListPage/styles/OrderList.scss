@@ -1,0 +1,33 @@
+@import '../../../utils/variables';
+
+.order {
+  padding: 100px;
+  padding-right: 20px ;
+
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__upper-part {
+    display: flex;
+  }
+
+  &__add {
+    border: 0;
+    border-radius: 50%;
+    background-color: $green-color;
+    box-shadow: 0px 3px 13px $shadow-color;
+    cursor: pointer;
+    margin-right: 30px;
+    padding: 0;
+
+    &-icon {
+      height: 50px;
+    }
+  }
+
+  &__header {
+    color: $main-font-color;
+  }
+}

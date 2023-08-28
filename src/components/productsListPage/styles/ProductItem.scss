@@ -1,0 +1,122 @@
+@import '../../../utils/variables';
+
+.product {
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 100px;
+    width: 100%;
+    border: 2px solid $border-color;
+    background-color: $white-color;
+    border-radius: 5px;
+    margin-top: 20px;
+    
+  }
+  
+  &__status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-left: 30px;
+  }
+  
+  &__photo {
+    width: 70px;
+    height: 50px;
+    margin-left: $gap;
+  }
+  
+  &__description {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 250px;
+    margin-left: $gap;
+  }
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 500;
+    color: $main-font-color;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: opacity 0.1s ease-in;
+    padding-bottom: 5px;
+  
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  
+  &__serial {
+    font-size: 18px;
+    font-weight: 400;
+    color: $light-gray;
+  }
+  
+  &__status {
+    flex-basis: $basis;
+    margin-left: $gap;
+  
+    &-text {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  
+  &__guarantee {
+    display: flex;
+    flex-direction: column;
+    flex-basis: $basis;
+  
+    &-block {
+      display: flex;
+      margin-bottom: 10px;
+  
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  
+    &-text {
+      flex: 0.2;
+      font-weight: 400;
+      color: $light-gray;
+    }
+  
+    &-date {
+      flex: 1;
+      font-weight: 500;
+      color: $dark-gray;
+      margin-left: $gap;
+    }
+  }
+  
+  &__novelty {
+    display: flex;
+    justify-content: center;
+    flex-basis: $basis;
+    margin-left: $gap;
+    &-text {
+      font-weight: 500;
+      color: $dark-gray;
+    }
+  }
+  
+  &__orders {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: $basis;
+  
+    &-text {
+      font-weight: 500;
+      color: $dark-gray;
+    }
+  
+    &-number {
+      font-weight: 500;
+      color: $main-font-color;
+    }
+  }
+}
+

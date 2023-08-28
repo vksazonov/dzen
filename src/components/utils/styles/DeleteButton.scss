@@ -1,0 +1,16 @@
+.delete {
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border: 0;
+    cursor: pointer;
+  }
+  &-icon {
+    height: 50px;
+    margin-left: 30px;
+  }
+}

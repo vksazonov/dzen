@@ -1,0 +1,94 @@
+@import '../../../utils/variables';
+
+.order {
+  &__item {
+    border: 2px solid $border-color;
+    background-color: $white-color;
+    border-radius: 5px;
+    margin-top: 20px;
+
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      height: 100px;
+      margin-left: 40px;
+    }
+
+    &-title {
+      flex-basis: 400px;
+      min-width: 300px;
+
+      &-text {
+        font-size: 22px;
+        font-weight: 400;
+        color: $dark-gray;
+        border-bottom: 1px solid $dark-gray;
+        cursor: pointer;
+        transition: opacity 0.1s ease-in;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    &-more {
+      display: flex;
+      flex: 1;
+      align-content: center;
+      border-radius: 50%;
+      border: 1px solid $border-color;
+      padding: 10px;
+      margin-left: 30px;
+
+      background-color: $white-color;
+      cursor: pointer;
+
+      &-pic{
+        height: 20px;
+        width: 20px;
+      }
+    }
+
+    &-quantity {
+      display: flex;
+      flex-basis: 150px;
+      align-items: center;
+      flex-direction: column;
+
+      &-number {
+        font-size: 20px;
+        font-weight: 500;
+        color: $main-font-color;
+      }
+
+      &-text {
+        color: $light-gray;
+      }
+    }
+  }
+}
+
+.close {
+  &-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 70px;
+    background-color: $border-color;
+    border: 0;
+    cursor: pointer;
+  }
+  &-icon {
+    height: 50px;
+    margin-left: 30px;
+  }
+}
+
+.short {
+  width: max-content;
+  min-width: 500px;
+  padding-left: 20px;
+}
