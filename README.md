@@ -2,12 +2,13 @@
 
 ## Technologies used
 
-HTML
-CSS (SASS, BEM, flexbox)
-TypeScript
-React.js v18 (FC, hooks)
-React router v6 (Hash router)
-Redux (Redux, Redux toolkit)
+-HTML
+-CSS (SASS, BEM, flexbox)
+-TypeScript
+-React.js v18 (FC, hooks)
+-React router v6 (Hash router)
+-Redux (Redux, Redux toolkit)
+-i18next
 
 ## Instructions to launch the app
 
