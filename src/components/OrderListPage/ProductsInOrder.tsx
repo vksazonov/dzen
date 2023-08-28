@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { setOpenModal } from '../../redux/reducers/modalReducer';
 import { useTranslation } from 'react-i18next';
+import { Product } from '../../types/Product';
 
 interface Props {
   chosenOrder: Order;
@@ -25,7 +26,7 @@ export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
     dispatch(setOpenModal(orderId));
   };
 
-  const orderedProducts = products.filter((product) => {
+  const orderedProducts = products.filter((product: Product) => {
     return chosenOrder.products.some((id) => id === product.id);
   });
 
@@ -52,7 +53,7 @@ export const ProductsInOrder: FC<Props> = ({ chosenOrder, setOpenMoreId }) => {
         </button>
 
         <div className="product__list">
-          {orderedProducts.map((product) => (
+          {orderedProducts.map((product: Product) => (
             <div className="product__item" key={product.id}>
               <div
                 className={classNames('product__status-indicator', {

@@ -6,13 +6,14 @@ import { FilterAndSort } from './FiterAndSort';
 import { ProductItem } from './ProductItem';
 import { setProducts } from '../../redux/actions/productActions';
 import { productsFromServer } from '../../api/products';
+import { Product } from '../../types/Product';
 
 export const ProductList = () => {
   const dispatch = useDispatch();
   const filteredAndSortedProducts = useSelector(selectFilteredAndSortedProducts);
   const query = useSelector((state: RootState) => state.search.query);
 
-  const searchFilteredProducts = filteredAndSortedProducts.filter((product) =>
+  const searchFilteredProducts = filteredAndSortedProducts.filter((product: Product) =>
     product.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -27,7 +28,7 @@ export const ProductList = () => {
         <h2 className="not-found">По вашему запросу ничего не найдено</h2>
       )}
       <div className="products__list">
-        {searchFilteredProducts.map((product) => (
+        {searchFilteredProducts.map((product: Product) => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>

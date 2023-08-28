@@ -50,8 +50,8 @@
 
   &__footer {
     display: flex;
-    justify-content: end;
-    align-items: end;
+    justify-content: flex-end;
+    align-items: flex-end;
     background-color: $green-color;
     height: 100%;
   }

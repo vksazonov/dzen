@@ -28,9 +28,6 @@ export const FilterAndSort = () => {
     [dispatch]
   );
 
-  const filterOptions = t('product.filter');
-  const sortingOptions = t('product.sorting');
-
   return (
     <div className="products__upper-part">
       <h1 className="products__header"> {t('product.title')} / {products.length}</h1>

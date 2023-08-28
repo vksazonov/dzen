@@ -6,7 +6,7 @@ export const productsFromServer: Product[] = [
     id: 1,
     serialNumber: 1234,
     isNew: 1,
-    photo: './images/products/monitor.jpg',
+    photo: '/images/products/monitor.jpg',
     title: 'Samsung Odyssey G5',
     type: 'monitors',
     specification: 'Specification 1',
@@ -196,8 +196,8 @@ export const productsFromServer: Product[] = [
 
 export const fetchOrders = async () => {
   try {
-    //const response = await axios.get('API_endpoint');
-    //const productsFromServer = response.data;
+    // const response = await axios.get('API_endpoint');
+    // const productsFromServer = response.data;
 
     return productsFromServer;
   } catch (error) {

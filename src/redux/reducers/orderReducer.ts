@@ -11,7 +11,7 @@ const initialState: OrderState = {
 };
 
 const ordersReducer = createReducer(initialState, (builder) => {
-  builder.addCase(setOrders, (state, action: PayloadAction<Order[]>) => {
+  builder.addCase(setOrders, (state: { orders: Order[]; }, action: PayloadAction<Order[]>) => {
     state.orders = action.payload;
   });
 });

@@ -25,13 +25,13 @@ const sortFunctions = {
 
 const productReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(setProducts, (state, action: PayloadAction<Product[]>) => {
+    .addCase(setProducts, (state: { products: Product[]; }, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     })
-    .addCase(setFilter, (state, action: PayloadAction<string>) => {
+    .addCase(setFilter, (state: { filter: string; }, action: PayloadAction<string>) => {
       state.filter = action.payload;
     })
-    .addCase(setSort, (state, action: PayloadAction<string>) => {
+    .addCase(setSort, (state: { sort: string; }, action: PayloadAction<string>) => {
       state.sort = action.payload;
     });
 });
@@ -43,7 +43,7 @@ export const selectFilteredAndSortedProducts = createSelector(
   (products, filter, sort) => {
     const filteredProducts = filter === 'all'
       ? products
-      : products.filter((product) => product.type === filter);
+      : products.filter((product: Product) => product.type === filter);
 
     const compareFunction = sortFunctions[sort as keyof typeof sortFunctions] || null;
 

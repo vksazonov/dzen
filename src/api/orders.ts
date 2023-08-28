@@ -48,8 +48,8 @@ export const ordersFromServer: Order[] = [
 
 export const fetchOrders = async () => {
   try {
-    //const response = await axios.get('API_endpoint');
-    //const ordersFromServer = response.data;
+    // const response = await axios.get('API_endpoint');
+    // const ordersFromServer = response.data;
 
     return ordersFromServer;
   } catch (error) {
